@@ -56,11 +56,17 @@ class changeDomain
              * @var xPDOObject $response
              */
             $response = $this->modx->getObject('changeDomainItem', $q);
-            $options = $response->getMany('changeDomain', array('domain_id' => $response->get('id')));
-            $opt = array();
-            foreach($options as $option){
-                $opt[] = $option->toArray();
+            if($response){
+                $options = $response->getMany('changeDomain', array('domain_id' => $response->get('id')));
+
+                if($options){
+                    $opt = array();
+                    foreach($options as $option){
+                        $opt[] = $option->toArray();
+                    }
+                }
             }
+
             if(is_object($response)){
                 $output = array(
                     'status' => 'success',

@@ -16,9 +16,10 @@ switch ($modx->event->name) {
     case 'OnHandleRequest':
         $response = $changeDomain->checkHost($_SERVER['HTTP_HOST']);
         if($response['status'] == 'success'){
-            $modx->setPlaceholders($response['response'], 'domain.');
-
-            print_r($response);
+            if($_SESSION['domain']){
+                unset($_SESSION['domain']);
+            }
+            $_SESSION['domain'] = $response['response'];
         }elseif($response['status'] == 'error'){
             $modx->log(MODX_LOG_LEVEL_ERROR, 'Поддомена ' . $response['response'] . ' нет');
             //TODO Сделать редирект на основной
