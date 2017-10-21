@@ -52,11 +52,22 @@ class changeDomain
                 'domain' => $host,
                 'active' => 1
             ));
+            /**
+             * @var xPDOObject $response
+             */
             $response = $this->modx->getObject('changeDomainItem', $q);
+            $options = $response->getMany('changeDomain', array('domain_id' => $response->get('id')));
+            $opt = array();
+            foreach($options as $option){
+                $opt[] = $option->toArray();
+            }
             if(is_object($response)){
                 $output = array(
                     'status' => 'success',
-                    'response' => $response->toArray()
+                    'response' => array(
+                        'values' => $response->toArray(),
+                        'options' => $opt
+                    )
                 );
             }else{
                 $sendRedirectHost = str_replace($host . '.', '', $_SERVER['HTTP_HOST']);

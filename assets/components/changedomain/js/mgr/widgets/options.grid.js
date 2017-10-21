@@ -16,7 +16,7 @@ changeDomain.grid.Options = function (config) {
         listeners: {
             rowDblClick: function (grid, rowIndex, e) {
                 var row = grid.store.getAt(rowIndex);
-                this.updateItem(grid, e, row);
+                //this.updateItem(grid, e, row);
             }
         },
         viewConfig: {
@@ -102,7 +102,7 @@ Ext.extend(changeDomain.grid.Options, MODx.grid.Grid, {
     },
 
     getFields: function () {
-        return ['id', 'name', 'key', 'value'];
+        return ['id', 'name', 'key', 'value', 'actions'];
     },
 
     getColumns: function () {
@@ -126,6 +126,13 @@ Ext.extend(changeDomain.grid.Options, MODx.grid.Grid, {
             dataIndex: 'value',
             sortable: false,
             width: 200,
+        },{
+            header: _('changedomain_grid_actions'),
+            dataIndex: 'actions',
+            renderer: changeDomain.utils.renderActions,
+            sortable: false,
+            width: 100,
+            id: 'actions'
         }];
     },
 

@@ -34,17 +34,17 @@ class changeDomainOptionsGetListProcessor extends modObjectGetListProcessor
     public function prepareQueryBeforeCount(xPDOQuery $c)
     {
 
-        $c->where(array(
-            'domain_id' => $this->getProperty('domain_id')
-        ));
-
         $query = trim($this->getProperty('query'));
         if ($query) {
             $c->where(array(
                 'name:LIKE' => "%{$query}%",
-                'OR:description:LIKE' => "%{$query}%",
+                'OR:key:LIKE' => "%{$query}%",
             ));
         }
+
+        $c->where(array(
+            'domain_id' => $this->getProperty('domain_id')
+        ));
 
         return $c;
     }
@@ -60,45 +60,13 @@ class changeDomainOptionsGetListProcessor extends modObjectGetListProcessor
         $array = $object->toArray();
         $array['actions'] = array();
 
-        // Edit
-        $array['actions'][] = array(
-            'cls' => '',
-            'icon' => 'icon icon-edit',
-            'title' => $this->modx->lexicon('changedomain_item_update'),
-            //'multiple' => $this->modx->lexicon('changedomain_items_update'),
-            'action' => 'updateItem',
-            'button' => true,
-            'menu' => true,
-        );
-
-        if (!$array['active']) {
-            $array['actions'][] = array(
-                'cls' => '',
-                'icon' => 'icon icon-power-off action-green',
-                'title' => $this->modx->lexicon('changedomain_item_enable'),
-                'multiple' => $this->modx->lexicon('changedomain_items_enable'),
-                'action' => 'enableItem',
-                'button' => true,
-                'menu' => true,
-            );
-        } else {
-            $array['actions'][] = array(
-                'cls' => '',
-                'icon' => 'icon icon-power-off action-gray',
-                'title' => $this->modx->lexicon('changedomain_item_disable'),
-                'multiple' => $this->modx->lexicon('changedomain_items_disable'),
-                'action' => 'disableItem',
-                'button' => true,
-                'menu' => true,
-            );
-        }
 
         // Remove
         $array['actions'][] = array(
             'cls' => '',
             'icon' => 'icon icon-trash-o action-red',
-            'title' => $this->modx->lexicon('changedomain_item_remove'),
-            'multiple' => $this->modx->lexicon('changedomain_items_remove'),
+            'title' => $this->modx->lexicon('changedomain_option_remove'),
+            'multiple' => $this->modx->lexicon('changedomain_options_remove'),
             'action' => 'removeItem',
             'button' => true,
             'menu' => true,

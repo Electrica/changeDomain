@@ -45,3 +45,4 @@ $_lang['changedomain_option_id'] = 'Id';
 $_lang['changedomain_option_name'] = 'Название';
 $_lang['changedomain_option_key'] = 'Ключ';
 $_lang['changedomain_option_value'] = 'Значение';
+$_lang['changedomain_option_remove'] = 'Удалить опцию';
