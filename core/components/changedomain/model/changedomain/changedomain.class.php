@@ -42,4 +42,32 @@ class changeDomain
         $this->modx->lexicon->load('changedomain:default');
     }
 
+    public function checkHost($httpHost = ''){
+
+        // Определяем запрашиваемый хост
+        $host = stristr($httpHost, '.', true);
+        if($host){
+            $q = $this->modx->newQuery('changeDomainItem');
+            $q->where(array(
+                'domain' => $host,
+                'active' => 1
+            ));
+            $response = $this->modx->getObject('changeDomainItem', $q);
+            if(is_object($response)){
+                $output = array(
+                    'status' => 'success',
+                    'response' => $response->toArray()
+                );
+            }else{
+                $sendRedirectHost = str_replace($host . '.', '', $_SERVER['HTTP_HOST']);
+                $output = array(
+                    'status' => 'error',
+                    'response' => $host
+                );
+            }
+        }
+
+        return $output;
+    }
+
 }

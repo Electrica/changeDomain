@@ -1,8 +1,2 @@
 <?php
-
-/**
- * @package changedomain
- */
-class changeDomainItem extends xPDOSimpleObject
-{
-}
+class changeDomainItem extends xPDOSimpleObject {}

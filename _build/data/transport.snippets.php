@@ -4,12 +4,7 @@
 
 $snippets = array();
 
-$tmp = array(
-    'changeDomain' => array(
-        'file' => 'changedomain',
-        'description' => '',
-    ),
-);
+$tmp = array();
 
 foreach ($tmp as $k => $v) {
     /** @var modSnippet $snippet */

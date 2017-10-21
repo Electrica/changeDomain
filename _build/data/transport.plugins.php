@@ -4,15 +4,14 @@
 
 $plugins = array();
 
-$tmp = array(/*
+$tmp = array(
     'changeDomain' => array(
         'file' => 'changedomain',
         'description' => '',
         'events' => array(
-            'OnManagerPageInit' => array()
+            'OnHandleRequest' => array()
         )
     )
-    */
 );
 
 foreach ($tmp as $k => $v) {

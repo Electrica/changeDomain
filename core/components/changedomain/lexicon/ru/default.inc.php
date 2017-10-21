@@ -5,30 +5,43 @@ $_lang['changedomain'] = 'changeDomain';
 $_lang['changedomain_menu_desc'] = 'Пример расширения для разработки.';
 $_lang['changedomain_intro_msg'] = 'Вы можете выделять сразу несколько предметов при помощи Shift или Ctrl.';
 
-$_lang['changedomain_items'] = 'Предметы';
+$_lang['changedomain_items'] = 'Домены';
 $_lang['changedomain_item_id'] = 'Id';
-$_lang['changedomain_item_name'] = 'Название';
-$_lang['changedomain_item_description'] = 'Описание';
-$_lang['changedomain_item_active'] = 'Активно';
-
-$_lang['changedomain_item_create'] = 'Создать предмет';
-$_lang['changedomain_item_update'] = 'Изменить Предмет';
-$_lang['changedomain_item_enable'] = 'Включить Предмет';
-$_lang['changedomain_items_enable'] = 'Включить Предметы';
-$_lang['changedomain_item_disable'] = 'Отключить Предмет';
-$_lang['changedomain_items_disable'] = 'Отключить Предметы';
-$_lang['changedomain_item_remove'] = 'Удалить Предмет';
-$_lang['changedomain_items_remove'] = 'Удалить Предметы';
-$_lang['changedomain_item_remove_confirm'] = 'Вы уверены, что хотите удалить этот Предмет?';
-$_lang['changedomain_items_remove_confirm'] = 'Вы уверены, что хотите удалить эти Предметы?';
+$_lang['changedomain_city_name'] = 'Название города';
+$_lang['changedomain_domain'] = 'Поддомен';
+$_lang['changedomain_maps'] = 'Карта';
+$_lang['changedomain_yandex'] = 'Яндекс вебмастер';
+$_lang['changedomain_active'] = 'Активно';
+$_lang['changedomain_description'] = 'Описание';
+$_lang['changedomain_item_create'] = 'Создать домен';
+$_lang['changedomain_item_update'] = 'Изменить домен';
+$_lang['changedomain_item_enable'] = 'Включить домен';
+$_lang['changedomain_items_enable'] = 'Включить домены';
+$_lang['changedomain_item_disable'] = 'Отключить домен';
+$_lang['changedomain_items_disable'] = 'Отключить домены';
+$_lang['changedomain_item_remove'] = 'Удалить домен';
+$_lang['changedomain_items_remove'] = 'Удалить домены';
+$_lang['changedomain_item_remove_confirm'] = 'Вы уверены, что хотите удалить этот домен?';
+$_lang['changedomain_items_remove_confirm'] = 'Вы уверены, что хотите удалить эти домены?';
 $_lang['changedomain_item_active'] = 'Включено';
 
-$_lang['changedomain_item_err_name'] = 'Вы должны указать имя Предмета.';
-$_lang['changedomain_item_err_ae'] = 'Предмет с таким именем уже существует.';
-$_lang['changedomain_item_err_nf'] = 'Предмет не найден.';
-$_lang['changedomain_item_err_ns'] = 'Предмет не указан.';
-$_lang['changedomain_item_err_remove'] = 'Ошибка при удалении Предмета.';
-$_lang['changedomain_item_err_save'] = 'Ошибка при сохранении Предмета.';
+$_lang['changedomain_item_err_name'] = 'Вы должны указать имя домена.';
+$_lang['changedomain_item_err_ae'] = 'Домен с таким именем уже существует.';
+$_lang['changedomain_item_err_nf'] = 'Домен не найден.';
+$_lang['changedomain_item_err_ns'] = 'Домен не указан.';
+$_lang['changedomain_item_err_remove'] = 'Ошибка при удалении домена.';
+$_lang['changedomain_item_err_save'] = 'Ошибка при сохранении домена.';
 
 $_lang['changedomain_grid_search'] = 'Поиск';
 $_lang['changedomain_grid_actions'] = 'Действия';
+
+$_lang['changedomain_details'] = 'Основные настройки';
+$_lang['changedomain_details_intro'] = 'Укажите основные настройки';
+
+$_lang['changedomain_option_create'] = 'Создать опцию';
+$_lang{'changedomain_options'} = 'Опции';
+$_lang['changedomain_options_intro'] = 'Добавьте необходимые ключи опций';
+$_lang['changedomain_option_id'] = 'Id';
+$_lang['changedomain_option_name'] = 'Название';
+$_lang['changedomain_option_key'] = 'Ключ';
+$_lang['changedomain_option_value'] = 'Значение';

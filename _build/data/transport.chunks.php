@@ -4,16 +4,7 @@
 
 $chunks = array();
 
-$tmp = array(
-    'tpl.changeDomain.item' => array(
-        'file' => 'item',
-        'description' => '',
-    ),
-    'tpl.changeDomain.office' => array(
-        'file' => 'office',
-        'description' => '',
-    ),
-);
+$tmp = array();
 
 // Save chunks for setup options
 $BUILD_CHUNKS = array();

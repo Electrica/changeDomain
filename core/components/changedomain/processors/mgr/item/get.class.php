@@ -2,7 +2,7 @@
 
 class changeDomainItemGetProcessor extends modObjectGetProcessor
 {
-    public $objectType = 'changeDomainItem';
+    public $objectType = 'changeDomain';
     public $classKey = 'changeDomainItem';
     public $languageTopics = array('changedomain:default');
     //public $permission = 'view';

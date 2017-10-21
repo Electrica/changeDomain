@@ -2,17 +2,42 @@
 <model package="changedomain" baseClass="xPDOObject" platform="mysql" defaultEngine="MyISAM" phpdoc-package="changedomain"
        version="1.1">
 
-    <object class="changeDomainItem" table="changedomain_items" extends="xPDOSimpleObject">
+    <object class="changeDomainItem" table="changedomain_domain" extends="xPDOSimpleObject">
         <field key="name" dbtype="varchar" precision="100" phptype="string" null="false" default=""/>
+        <field key="domain" dbtype="varchar" precision="100" phptype="string" null="false" default=""/>
         <field key="description" dbtype="text" phptype="text" null="true" default=""/>
+        <field key="maps" dbtype="text" phptype="text" null="true" default=""/>
+        <field key="yandex" dbtype="text" phptype="text" null="true" default=""/>
+
         <field key="active" dbtype="tinyint" precision="1" phptype="boolean" null="true" default="1"/>
 
         <index alias="name" name="name" primary="false" unique="false" type="BTREE">
             <column key="name" length="" collation="A" null="false"/>
         </index>
+        <index alias="domain" name="domain" primary="false" unique="false" type="BTREE">
+            <column key="domain" length="" collation="A" null="false"/>
+        </index>
         <index alias="active" name="active" primary="false" unique="false" type="BTREE">
             <column key="active" length="" collation="A" null="false"/>
         </index>
+
+        <composite alias="changeDomain" class="changeDomainOptions" local="id" foreign="domain_id" cardinality="many" owner="local" />
+
+    </object>
+
+    <object class="changeDomainOptions" table="changedomain_domain_options" extends="xPDOSimpleObject">
+        <field key="domain_id" dbtype="int" precision="10" phptype="integer" null="false" default=""/>
+        <field key="name" dbtype="varchar" precision="255" phptype="string" null="false" default=""/>
+        <field key="key" dbtype="varchar" precision="255" phptype="string" null="false" default=""/>
+        <field key="value" dbtype="text" phptype="text" null="true" default=""/>
+
+        <index alias="name" name="name" primary="false" unique="false" type="BTREE">
+            <column key="name" length="" collation="A" null="false"/>
+        </index>
+        <index alias="domain_id" name="domain" primary="false" unique="false" type="BTREE">
+            <column key="domain_id" length="" collation="A" null="false"/>
+        </index>
+        <aggregate alias="changeDomainOptions" class="changeDomainItem" local="domain_id" foreign="id" cardinality="one" owner="foreign" />
     </object>
 
 </model>

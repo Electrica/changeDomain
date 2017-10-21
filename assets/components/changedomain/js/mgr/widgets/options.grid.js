@@ -1,7 +1,7 @@
-changeDomain.grid.Items = function (config) {
+changeDomain.grid.Options = function (config) {
     config = config || {};
     if (!config.id) {
-        config.id = 'changedomain-grid-items';
+        config.id = 'changedomain-options-items';
     }
     Ext.applyIf(config, {
         url: changeDomain.config.connector_url,
@@ -10,7 +10,7 @@ changeDomain.grid.Items = function (config) {
         tbar: this.getTopBar(config),
         sm: new Ext.grid.CheckboxSelectionModel(),
         baseParams: {
-            action: 'mgr/item/getlist'
+            action: 'mgr/item/options/getlist'
         },
         listeners: {
             rowDblClick: function (grid, rowIndex, e) {
@@ -34,7 +34,7 @@ changeDomain.grid.Items = function (config) {
         remoteSort: true,
         autoHeight: true,
     });
-    changeDomain.grid.Items.superclass.constructor.call(this, config);
+    changeDomain.grid.Options.superclass.constructor.call(this, config);
 
     // Clear selection on grid refresh
     this.store.on('load', function () {
@@ -43,7 +43,7 @@ changeDomain.grid.Items = function (config) {
         }
     }, this);
 };
-Ext.extend(changeDomain.grid.Items, MODx.grid.Grid, {
+Ext.extend(changeDomain.grid.Options, MODx.grid.Grid, {
     windows: {},
 
     getMenu: function (grid, rowIndex) {
@@ -57,7 +57,7 @@ Ext.extend(changeDomain.grid.Items, MODx.grid.Grid, {
 
     createItem: function (btn, e) {
         var w = MODx.load({
-            xtype: 'changedomain-item-window-create',
+            xtype: 'changedomain-options-window-create',
             id: Ext.id(),
             listeners: {
                 success: {
@@ -84,14 +84,14 @@ Ext.extend(changeDomain.grid.Items, MODx.grid.Grid, {
         MODx.Ajax.request({
             url: this.config.url,
             params: {
-                action: 'mgr/item/get',
+                action: 'mgr/item/options/get',
                 id: id
             },
             listeners: {
                 success: {
                     fn: function (r) {
                         var w = MODx.load({
-                            xtype: 'changedomain-item-window-update',
+                            xtype: 'changedomain-options-window-update',
                             id: Ext.id(),
                             record: r,
                             listeners: {
@@ -118,14 +118,14 @@ Ext.extend(changeDomain.grid.Items, MODx.grid.Grid, {
         }
         MODx.msg.confirm({
             title: ids.length > 1
-                ? _('changedomain_items_remove')
-                : _('changedomain_item_remove'),
+                ? _('changedomain_option_remove')
+                : _('changedomain_option_remove'),
             text: ids.length > 1
-                ? _('changedomain_items_remove_confirm')
-                : _('changedomain_item_remove_confirm'),
+                ? _('changedomain_options_remove_confirm')
+                : _('changedomain_options_remove_confirm'),
             url: this.config.url,
             params: {
-                action: 'mgr/item/remove',
+                action: 'mgr/item/options/remove',
                 ids: Ext.util.JSON.encode(ids),
             },
             listeners: {
@@ -139,92 +139,37 @@ Ext.extend(changeDomain.grid.Items, MODx.grid.Grid, {
         return true;
     },
 
-    disableItem: function () {
-        var ids = this._getSelectedIds();
-        if (!ids.length) {
-            return false;
-        }
-        MODx.Ajax.request({
-            url: this.config.url,
-            params: {
-                action: 'mgr/item/disable',
-                ids: Ext.util.JSON.encode(ids),
-            },
-            listeners: {
-                success: {
-                    fn: function () {
-                        this.refresh();
-                    }, scope: this
-                }
-            }
-        })
-    },
-
-    enableItem: function () {
-        var ids = this._getSelectedIds();
-        if (!ids.length) {
-            return false;
-        }
-        MODx.Ajax.request({
-            url: this.config.url,
-            params: {
-                action: 'mgr/item/enable',
-                ids: Ext.util.JSON.encode(ids),
-            },
-            listeners: {
-                success: {
-                    fn: function () {
-                        this.refresh();
-                    }, scope: this
-                }
-            }
-        })
-    },
-
     getFields: function () {
-        return ['id', 'name', 'domain','description', 'active', 'actions'];
+        return ['id', 'name', 'key', 'value'];
     },
 
     getColumns: function () {
         return [{
-            header: _('changedomain_item_id'),
+            header: _('changedomain_option_id'),
             dataIndex: 'id',
             sortable: true,
             width: 70
         }, {
-            header: _('changedomain_city_name'),
+            header: _('changedomain_option_name'),
             dataIndex: 'name',
             sortable: true,
-            width: 200,
+            width: 100,
         }, {
-            header: _('changedomain_domain'),
-            dataIndex: 'domain',
+            header: _('changedomain_option_key'),
+            dataIndex: 'key',
             sortable: false,
             width: 100,
         },{
-            header: _('changedomain_description'),
-            dataIndex: 'description',
-            sortable: false,
-            width: 250,
-        },{
-            header: _('changedomain_active'),
-            dataIndex: 'active',
-            renderer: changeDomain.utils.renderBoolean,
-            sortable: true,
-            width: 100,
-        }, {
-            header: _('changedomain_grid_actions'),
-            dataIndex: 'actions',
-            renderer: changeDomain.utils.renderActions,
+            header: _('changedomain_option_value'),
+            dataIndex: 'valu',
             sortable: false,
             width: 100,
-            id: 'actions'
         }];
     },
 
     getTopBar: function () {
         return [{
-            text: '<i class="icon icon-plus"></i>&nbsp;' + _('changedomain_item_create'),
+            text: '<i class="icon icon-plus"></i>&nbsp;' + _('changedomain_option_create'),
             handler: this.createItem,
             scope: this
         }, '->', {
@@ -289,4 +234,4 @@ Ext.extend(changeDomain.grid.Items, MODx.grid.Grid, {
         this.getBottomToolbar().changePage(1);
     },
 });
-Ext.reg('changedomain-grid-items', changeDomain.grid.Items);
+Ext.reg('changedomain-options-items', changeDomain.grid.Options);

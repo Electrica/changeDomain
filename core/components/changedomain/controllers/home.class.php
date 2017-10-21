@@ -60,7 +60,9 @@ class changeDomainHomeManagerController extends modExtraManagerController
         $this->addJavascript($this->changeDomain->config['jsUrl'] . 'mgr/misc/utils.js');
         $this->addJavascript($this->changeDomain->config['jsUrl'] . 'mgr/misc/combo.js');
         $this->addJavascript($this->changeDomain->config['jsUrl'] . 'mgr/widgets/items.grid.js');
+        $this->addJavascript($this->changeDomain->config['jsUrl'] . 'mgr/widgets/options.grid.js');
         $this->addJavascript($this->changeDomain->config['jsUrl'] . 'mgr/widgets/items.windows.js');
+        $this->addJavascript($this->changeDomain->config['jsUrl'] . 'mgr/widgets/options.windows.js');
         $this->addJavascript($this->changeDomain->config['jsUrl'] . 'mgr/widgets/home.panel.js');
         $this->addJavascript($this->changeDomain->config['jsUrl'] . 'mgr/sections/home.js');
 

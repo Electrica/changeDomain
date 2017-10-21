@@ -1,5 +1,6 @@
 <?php
 
+
 class changeDomainItemGetListProcessor extends modObjectGetListProcessor
 {
     public $objectType = 'changeDomainItem';
