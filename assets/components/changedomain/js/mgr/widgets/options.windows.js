@@ -23,6 +23,9 @@ Ext.extend(changeDomain.window.CreateOptions, MODx.Window, {
 
     getFields: function (config) {
         return [{
+            xtype: 'hidden',
+            name: 'domain_id'
+        },{
             xtype: 'textfield',
             fieldLabel: _('changedomain_option_name'),
             name: 'name',
@@ -31,13 +34,13 @@ Ext.extend(changeDomain.window.CreateOptions, MODx.Window, {
         },{
             xtype: 'textfield',
             fieldLabel: _('changedomain_option_key'),
-            name: 'name',
+            name: 'key',
             anchor: '99%',
             allowBlank: false,
         },{
             xtype: 'textfield',
             fieldLabel: _('changedomain_option_value'),
-            name: 'name',
+            name: 'value',
             anchor: '99%',
             allowBlank: false,
         }]
@@ -53,7 +56,7 @@ Ext.reg('changedomain-options-window-create', changeDomain.window.CreateOptions)
 changeDomain.window.UpdateOptions = function (config) {
     config = config || {};
     if (!config.id) {
-        config.id = 'changedomain-optionsm-window-update';
+        config.id = 'changedomain-options-window-update';
     }
     Ext.applyIf(config, {
         title: _('changedomain_options_update'),
@@ -74,6 +77,9 @@ Ext.extend(changeDomain.window.UpdateOptions, MODx.Window, {
 
     getFields: function (config) {
         return [{
+            xtype: 'textfield',
+            name: 'domain_id'
+        },{
             xtype: 'textfield',
             fieldLabel: _('changedomain_city_name'),
             name: 'name',

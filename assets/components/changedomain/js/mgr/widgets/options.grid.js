@@ -10,7 +10,8 @@ changeDomain.grid.Options = function (config) {
         tbar: this.getTopBar(config),
         sm: new Ext.grid.CheckboxSelectionModel(),
         baseParams: {
-            action: 'mgr/item/options/getlist'
+            action: 'mgr/item/options/getlist',
+            domain_id: config.record.id
         },
         listeners: {
             rowDblClick: function (grid, rowIndex, e) {
@@ -24,11 +25,11 @@ changeDomain.grid.Options = function (config) {
             autoFill: true,
             showPreview: true,
             scrollOffset: 0,
-            getRowClass: function (rec) {
-                return !rec.data.active
-                    ? 'changedomain-grid-row-disabled'
-                    : '';
-            }
+            // getRowClass: function (rec) {
+            //     return !rec.data.active
+            //         ? 'changedomain-grid-row-disabled'
+            //         : '';
+            // }
         },
         paging: true,
         remoteSort: true,
@@ -68,47 +69,8 @@ Ext.extend(changeDomain.grid.Options, MODx.grid.Grid, {
             }
         });
         w.reset();
-        w.setValues({active: true});
+        w.setValues({domain_id: this.config.record.id});
         w.show(e.target);
-    },
-
-    updateItem: function (btn, e, row) {
-        if (typeof(row) != 'undefined') {
-            this.menu.record = row.data;
-        }
-        else if (!this.menu.record) {
-            return false;
-        }
-        var id = this.menu.record.id;
-
-        MODx.Ajax.request({
-            url: this.config.url,
-            params: {
-                action: 'mgr/item/options/get',
-                id: id
-            },
-            listeners: {
-                success: {
-                    fn: function (r) {
-                        var w = MODx.load({
-                            xtype: 'changedomain-options-window-update',
-                            id: Ext.id(),
-                            record: r,
-                            listeners: {
-                                success: {
-                                    fn: function () {
-                                        this.refresh();
-                                    }, scope: this
-                                }
-                            }
-                        });
-                        w.reset();
-                        w.setValues(r.object);
-                        w.show(e.target);
-                    }, scope: this
-                }
-            }
-        });
     },
 
     removeItem: function () {
@@ -161,9 +123,9 @@ Ext.extend(changeDomain.grid.Options, MODx.grid.Grid, {
             width: 100,
         },{
             header: _('changedomain_option_value'),
-            dataIndex: 'valu',
+            dataIndex: 'value',
             sortable: false,
-            width: 100,
+            width: 200,
         }];
     },
 

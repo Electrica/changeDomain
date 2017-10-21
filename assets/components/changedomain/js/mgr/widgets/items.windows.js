@@ -3,6 +3,8 @@ changeDomain.window.CreateItem = function (config) {
     if (!config.id) {
         config.id = 'changedomain-item-window-create';
     }
+    config.record = config.record || {object: {id: 0}}
+    console.log(config.record);
     Ext.applyIf(config, {
         title: _('changedomain_item_create'),
         width: 650,
@@ -122,6 +124,7 @@ changeDomain.window.UpdateItem = function (config) {
 Ext.extend(changeDomain.window.UpdateItem, MODx.Window, {
 
     getFields: function (config) {
+
         var tabs = [{
             xtype: 'modx-tabs',
             defaults: {border: false, autoHeight: true},
@@ -195,7 +198,8 @@ Ext.extend(changeDomain.window.UpdateItem, MODx.Window, {
                     anchor: '100%',
                     items:[{
                         xtype: 'changedomain-options-items',
-                        preventRender: true
+                        preventRender: true,
+                        record: config.record.object
                     }]
                 }]
             }]
