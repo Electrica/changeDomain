@@ -79,7 +79,7 @@ class changeDomain
                 $sendRedirectHost = str_replace($host . '.', '', $_SERVER['HTTP_HOST']);
                 $output = array(
                     'status' => 'error',
-                    'response' => $host
+                    'response' => $sendRedirectHost
                 );
             }
         }
