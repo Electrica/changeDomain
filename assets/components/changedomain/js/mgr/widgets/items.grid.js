@@ -182,7 +182,7 @@ Ext.extend(changeDomain.grid.Items, MODx.grid.Grid, {
     },
 
     getFields: function () {
-        return ['id', 'name', 'domain','description', 'active', 'actions'];
+        return ['id', 'name', 'domain','description','keywords', 'active', 'actions'];
     },
 
     getColumns: function () {
@@ -195,7 +195,7 @@ Ext.extend(changeDomain.grid.Items, MODx.grid.Grid, {
             header: _('changedomain_city_name'),
             dataIndex: 'name',
             sortable: true,
-            width: 200,
+            width: 100,
         }, {
             header: _('changedomain_domain'),
             dataIndex: 'domain',
@@ -207,11 +207,16 @@ Ext.extend(changeDomain.grid.Items, MODx.grid.Grid, {
             sortable: false,
             width: 250,
         },{
+            header: _('changedomain_keywords'),
+            dataIndex: 'keywords',
+            sortable: false,
+            width: 250,
+        },{
             header: _('changedomain_active'),
             dataIndex: 'active',
             renderer: changeDomain.utils.renderBoolean,
             sortable: true,
-            width: 100,
+            width: 70,
         }, {
             header: _('changedomain_grid_actions'),
             dataIndex: 'actions',

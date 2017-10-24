@@ -6,6 +6,7 @@
         <field key="name" dbtype="varchar" precision="100" phptype="string" null="false" default=""/>
         <field key="domain" dbtype="varchar" precision="100" phptype="string" null="false" default=""/>
         <field key="description" dbtype="text" phptype="text" null="true" default=""/>
+        <field key="keywords" dbtype="text" phptype="text" null="true" default=""/>
         <field key="maps" dbtype="text" phptype="text" null="true" default=""/>
         <field key="yandex" dbtype="text" phptype="text" null="true" default=""/>
 

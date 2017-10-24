@@ -13,6 +13,7 @@ $_lang['changedomain_maps'] = 'Карта';
 $_lang['changedomain_yandex'] = 'Яндекс вебмастер';
 $_lang['changedomain_active'] = 'Активно';
 $_lang['changedomain_description'] = 'Описание';
+$_lang['changedomain_keywords'] = 'Ключевые слова';
 $_lang['changedomain_item_create'] = 'Создать домен';
 $_lang['changedomain_item_update'] = 'Изменить домен';
 $_lang['changedomain_item_enable'] = 'Включить домен';

@@ -9,6 +9,7 @@ $xpdo_meta_map['changeDomainItem']= array (
     'name' => '',
     'domain' => '',
     'description' => '',
+    'keywords' => '',
     'maps' => '',
     'yandex' => '',
     'active' => 1,
@@ -32,6 +33,13 @@ $xpdo_meta_map['changeDomainItem']= array (
       'default' => '',
     ),
     'description' => 
+    array (
+      'dbtype' => 'text',
+      'phptype' => 'text',
+      'null' => true,
+      'default' => '',
+    ),
+    'keywords' => 
     array (
       'dbtype' => 'text',
       'phptype' => 'text',
