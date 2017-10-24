@@ -177,7 +177,7 @@ Ext.extend(changeDomain.window.UpdateItem, MODx.Window, {
                             fieldLabel: _('changedomain_keywords'),
                             name: 'keywords',
                             anchor: '99%',
-                            allowBlank: false,
+                            allowBlank: true,
                         },{
                             xtype: 'textarea',
                             fieldLabel: _('changedomain_maps'),
