@@ -7,6 +7,7 @@ $xpdo_meta_map['changeDomainOptions']= array (
   'fields' => 
   array (
     'domain_id' => 0,
+    'resource_id' => 0,
     'name' => '',
     'key' => '',
     'value' => '',
@@ -14,6 +15,14 @@ $xpdo_meta_map['changeDomainOptions']= array (
   'fieldMeta' => 
   array (
     'domain_id' => 
+    array (
+      'dbtype' => 'int',
+      'precision' => '10',
+      'phptype' => 'integer',
+      'null' => false,
+      'default' => 0,
+    ),
+    'resource_id' => 
     array (
       'dbtype' => 'int',
       'precision' => '10',
@@ -72,6 +81,22 @@ $xpdo_meta_map['changeDomainOptions']= array (
       'columns' => 
       array (
         'domain_id' => 
+        array (
+          'length' => '',
+          'collation' => 'A',
+          'null' => false,
+        ),
+      ),
+    ),
+    'resource_id' => 
+    array (
+      'alias' => 'resource_id',
+      'primary' => false,
+      'unique' => false,
+      'type' => 'BTREE',
+      'columns' => 
+      array (
+        'resource_id' => 
         array (
           'length' => '',
           'collation' => 'A',

@@ -4,13 +4,17 @@
 
 $settings = array();
 
-$tmp = array(/*
-    'some_setting' => array(
+$tmp = array(
+    'redirect' => array(
         'xtype' => 'combo-boolean',
-        'value' => true,
+        'value' => false,
         'area' => 'changedomain_main',
     ),
-    */
+    'save_log' => array(
+        'xtype' => 'combo-boolean',
+        'value' => false,
+        'area' => 'changedomain_main',
+    )
 );
 
 foreach ($tmp as $k => $v) {

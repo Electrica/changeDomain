@@ -32,11 +32,25 @@ switch ($modx->event->name) {
                 }
                 $_SESSION['domain'] = $response['response'];
             }elseif($response['status'] == 'error'){
-                $modx->sendRedirect('http://' . $domain, array('responseCode' => 'HTTP/1.1 301 Moved Permanently'));
+                if($modx->getOption('changedomain_save_log')){
+                    $modx->log(MODX_LOG_LEVEL_ERROR, 'Перешли на ' . $_SERVER['HTTP_HOST']);
+                }
+                if($modx->getOption('changedomain_redirect')){
+                    $modx->sendRedirect('http://' . $domain, array('responseCode' => 'HTTP/1.1 301 Moved Permanently'));
+                }
             }
         }else{
             //TODO это основной сайт
         }
+        break;
+
+
+    case 'OnManagerPageBeforeRender':
+
+        $controller->changeDomain = $changeDomain = $modx->getService('changedomain', 'changeDomain', $modx->getOption('changedomain_core_path', null,
+                $modx->getOption('core_path') . 'components/changedomain/') . 'model/changedomain/', $scriptProperties);
+
+        $changeDomain->loadJsCss();
         break;
 
 }

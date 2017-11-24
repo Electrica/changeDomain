@@ -9,7 +9,8 @@ $tmp = array(
         'file' => 'changedomain',
         'description' => '',
         'events' => array(
-            'OnHandleRequest' => array()
+            'OnHandleRequest' => array(),
+            'OnDocFormRender' => array()
         )
     )
 );

@@ -46,3 +46,32 @@ Ext.extend(changeDomain.combo.Search, Ext.form.TwinTriggerField, {
 });
 Ext.reg('changedomain-combo-search', changeDomain.combo.Search);
 Ext.reg('changedomain-field-search', changeDomain.combo.Search);
+
+
+
+changeDomain.combo.Domain = function (config) {
+    config = config || {};
+    console.log(changeDomain.config);
+
+    Ext.applyIf(config, {
+        name: 'domain_id',
+        fieldLabel: _('changedomain_get_domain'),
+        hiddenName: 'domain_id',
+        displayField: 'name',
+        valueField: 'id',
+        anchor: '99%',
+        fields: ['id', 'name'],
+        pageSize: 20,
+        url: '/changeDomain/assets/components/changedomain/connector.php',
+        typeAhead: true,
+        editable: true,
+        allowBlank: true,
+        emptyText: _('changedomain_get_domain'),
+        baseParams: {
+            action: 'mgr/item/getlistresource',
+        }
+    });
+    changeDomain.combo.Domain.superclass.constructor.call(this, config);
+};
+Ext.extend(changeDomain.combo.Domain, MODx.combo.ComboBox);
+Ext.reg('changedomain-combo-domain', changeDomain.combo.Domain);

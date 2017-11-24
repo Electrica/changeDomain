@@ -28,6 +28,7 @@
 
     <object class="changeDomainOptions" table="changedomain_domain_options" extends="xPDOSimpleObject">
         <field key="domain_id" dbtype="int" precision="10" phptype="integer" null="false" default=""/>
+        <field key="resource_id" dbtype="int" precision="10" phptype="integer" null="false" default=""/>
         <field key="name" dbtype="varchar" precision="255" phptype="string" null="false" default=""/>
         <field key="key" dbtype="varchar" precision="255" phptype="string" null="false" default=""/>
         <field key="value" dbtype="text" phptype="text" null="true" default=""/>
@@ -38,7 +39,10 @@
         <index alias="domain_id" name="domain" primary="false" unique="false" type="BTREE">
             <column key="domain_id" length="" collation="A" null="false"/>
         </index>
+        <index alias="resource_id" name="resource_id" primary="false" unique="false" type="BTREE">
+            <column key="resource_id" length="" collation="A" null="false"/>
+        </index>
+        <aggregate alias="changeDomainOptions" class="modResource" local="resource_id" foreign="id" cardinality="one" owner="foreign" />
         <aggregate alias="changeDomainOptions" class="changeDomainItem" local="domain_id" foreign="id" cardinality="one" owner="foreign" />
     </object>
-
 </model>

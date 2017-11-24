@@ -42,6 +42,27 @@ class changeDomain
         $this->modx->lexicon->load('changedomain:default');
     }
 
+    function loadJsCss(){
+
+        $this->modx->controller->addCss($this->config['cssUrl'] . 'mgr/main.css');
+        $this->modx->controller->addCss($this->config['cssUrl'] . 'mgr/bootstrap.buttons.css');
+        $this->modx->controller->addJavascript($this->config['jsUrl'].'mgr/changedomain.js');
+        $this->modx->controller->addLastJavascript($this->config['jsUrl'].'mgr/misc/combo.js');
+        $this->modx->controller->addLastJavascript($this->config['jsUrl'].'mgr/misc/utils.js');
+        $this->modx->controller->addLastJavascript($this->config['jsUrl'].'mgr/widgets/optionsresource.grid.js');
+        $this->modx->controller->addLastJavascript($this->config['jsUrl'].'mgr/resource/tab.js');
+        $this->modx->controller->addLastJavascript($this->config['jsUrl'].'mgr/widgets/resource.panel.js');
+        $this->modx->controller->addLastJavascript($this->config['jsUrl'].'mgr/widgets/optionsresource.windows.js');
+
+        $this->modx->controller->addHtml('<script type="text/javascript">
+            changeDomain.config = ' . json_encode($this->config) . ';
+            changeDomain.config.connector_url = "' . $this->config['connectorUrl'] . '";
+        </script>
+        ');
+
+        $this->modx->controller->addLexiconTopic('changedomain:default');
+    }
+
     public function checkHost($httpHost = ''){
 
         // Определяем запрашиваемый хост

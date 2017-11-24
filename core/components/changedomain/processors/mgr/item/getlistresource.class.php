@@ -1,10 +1,10 @@
 <?php
 
 
-class changeDomainOptionsGetListProcessor extends modObjectGetListProcessor
+class changeDomainItemGetListResourceProcessor extends modObjectGetListProcessor
 {
-    public $objectType = 'changeDomainOptions';
-    public $classKey = 'changeDomainOptions';
+    public $objectType = 'changeDomainItem';
+    public $classKey = 'changeDomainItem';
     public $defaultSortField = 'id';
     public $defaultSortDirection = 'DESC';
     //public $permission = 'list';
@@ -33,23 +33,20 @@ class changeDomainOptionsGetListProcessor extends modObjectGetListProcessor
      */
     public function prepareQueryBeforeCount(xPDOQuery $c)
     {
-
         $query = trim($this->getProperty('query'));
         if ($query) {
             $c->where(array(
                 'name:LIKE' => "%{$query}%",
-                'OR:key:LIKE' => "%{$query}%",
+                'OR:description:LIKE' => "%{$query}%",
             ));
         }
 
         $c->where(array(
-            'domain_id' => $this->getProperty('domain_id'),
-            'resource_id' => 0
+            'active' => 1
         ));
 
         return $c;
     }
-
 
     /**
      * @param xPDOObject $object
@@ -59,23 +56,15 @@ class changeDomainOptionsGetListProcessor extends modObjectGetListProcessor
     public function prepareRow(xPDOObject $object)
     {
         $array = $object->toArray();
-        $array['actions'] = array();
 
+        $this->modx->log(MODX_LOG_LEVER_ERROR, print_r($array));
 
-        // Remove
-        $array['actions'][] = array(
-            'cls' => '',
-            'icon' => 'icon icon-trash-o action-red',
-            'title' => $this->modx->lexicon('changedomain_option_remove'),
-            'multiple' => $this->modx->lexicon('changedomain_options_remove'),
-            'action' => 'removeItem',
-            'button' => true,
-            'menu' => true,
-        );
 
         return $array;
     }
 
+
+
 }
 
-return 'changeDomainOptionsGetListProcessor';
+return 'changeDomainItemGetListResourceProcessor';

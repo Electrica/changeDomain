@@ -13,13 +13,34 @@ class changeDomainOptionsCreateProcessor extends modObjectCreateProcessor
      */
     public function beforeSet()
     {
-        $name = trim($this->getProperty('name'));
-        if (empty($name)) {
-            $this->modx->error->addField('name', $this->modx->lexicon('changedomain_item_err_name'));
-        } elseif ($this->modx->getCount($this->classKey, array('name' => $name, 'domain_id' => $this->getProperty('domain_id')))) {
-            $this->modx->error->addField('name', $this->modx->lexicon('changedomain_item_err_ae'));
-        }
+        if($this->getProperty('resource_id')){
 
+            $validate = array(
+                'name',
+                //'domain_id',
+                'key',
+                'value'
+            );
+
+            foreach ($validate as $val){
+                if(empty($this->getProperty($val))){
+                    $this->modx->error->addField($val, $this->modx->lexicon('changedomain_item_err_key'));
+                }elseif($this->modx->getCount($this->classKey, array(
+                    'name' => $this->getProperty('name'),
+                    'resource_id' => $this->getProperty('resource_id'),
+                    'domain_id' => $this->getProperty('domain_id')))){
+                    $this->modx->error->addField('name', $this->modx->lexicon('changedomain_item_err_ae'));
+                }
+            }
+        }elseif($this->getProperty('domain_id') && !$this->getProperty('resource_id')){
+            $this->modx->log(MODX_LOG_LEVER_ERROR, "А это чисто с компонента");
+            $name = trim($this->getProperty('name'));
+            if (empty($name)) {
+                $this->modx->error->addField('name', $this->modx->lexicon('changedomain_item_err_name'));
+            } elseif ($this->modx->getCount($this->classKey, array('name' => $name, 'domain_id' => $this->getProperty('domain_id')))) {
+                $this->modx->error->addField('name', $this->modx->lexicon('changedomain_item_err_ae'));
+            }
+        }
         return parent::beforeSet();
     }
 

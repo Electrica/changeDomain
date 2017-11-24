@@ -1,7 +1,8 @@
-changeDomain.grid.Options = function (config) {
+changeDomain.grid.OptionsResource = function (config) {
+
     config = config || {};
     if (!config.id) {
-        config.id = 'changedomain-options-items';
+        config.id = 'changedomain-options-resource';
     }
     Ext.applyIf(config, {
         url: changeDomain.config.connector_url,
@@ -10,8 +11,8 @@ changeDomain.grid.Options = function (config) {
         tbar: this.getTopBar(config),
         sm: new Ext.grid.CheckboxSelectionModel(),
         baseParams: {
-            action: 'mgr/item/options/getlist',
-            domain_id: config.record.id
+            action: 'mgr/resource/getlist',
+            resource_id: config.record.id
         },
         listeners: {
             rowDblClick: function (grid, rowIndex, e) {
@@ -38,7 +39,7 @@ changeDomain.grid.Options = function (config) {
         //enableDragDrop: true,
         //plugins: this.getPlugins(config),
     });
-    changeDomain.grid.Options.superclass.constructor.call(this, config);
+    changeDomain.grid.OptionsResource.superclass.constructor.call(this, config);
 
     // Clear selection on grid refresh
     this.store.on('load', function () {
@@ -47,7 +48,7 @@ changeDomain.grid.Options = function (config) {
         }
     }, this);
 };
-Ext.extend(changeDomain.grid.Options, MODx.grid.Grid, {
+Ext.extend(changeDomain.grid.OptionsResource, MODx.grid.Grid, {
     windows: {},
 
     getMenu: function (grid, rowIndex) {
@@ -61,7 +62,7 @@ Ext.extend(changeDomain.grid.Options, MODx.grid.Grid, {
 
     createItem: function (btn, e) {
         var w = MODx.load({
-            xtype: 'changedomain-options-window-create',
+            xtype: 'changedomain-options-resource-window-create',
             id: Ext.id(),
             listeners: {
                 success: {
@@ -72,7 +73,7 @@ Ext.extend(changeDomain.grid.Options, MODx.grid.Grid, {
             }
         });
         w.reset();
-        w.setValues({domain_id: this.config.record.id});
+        w.setValues({resource_id: this.config.record.id});
         w.show(e.target);
     },
 
@@ -105,7 +106,7 @@ Ext.extend(changeDomain.grid.Options, MODx.grid.Grid, {
     },
 
     getFields: function () {
-        return ['id', 'name', 'key', 'value', 'actions'];
+        return ['id','domain_id', 'name', 'key', 'value', 'actions'];
     },
 
     getColumns: function () {
@@ -113,22 +114,26 @@ Ext.extend(changeDomain.grid.Options, MODx.grid.Grid, {
             header: _('changedomain_option_id'),
             dataIndex: 'id',
             sortable: true,
-            width: 70
-        }, {
+            width: 20
+        },{
+            header: _('changedomain_option_domain'),
+            dataIndex: 'domain_id',
+            sortable: true
+        },{
             header: _('changedomain_option_name'),
             dataIndex: 'name',
             sortable: true,
-            width: 100,
+            width: 75,
         }, {
             header: _('changedomain_option_key'),
             dataIndex: 'key',
             sortable: false,
-            width: 100,
+            width: 75,
         }, {
             header: _('changedomain_option_value'),
             dataIndex: 'value',
             sortable: false,
-            width: 200,
+            width: 50,
             editor: {
                 xtype: 'textfield'
             }
@@ -137,7 +142,7 @@ Ext.extend(changeDomain.grid.Options, MODx.grid.Grid, {
             dataIndex: 'actions',
             renderer: changeDomain.utils.renderActions,
             sortable: false,
-            width: 100,
+            width: 50,
             id: 'actions'
         }];
     },
@@ -223,4 +228,4 @@ Ext.extend(changeDomain.grid.Options, MODx.grid.Grid, {
         this.getBottomToolbar().changePage(1);
     },
 });
-Ext.reg('changedomain-options-items', changeDomain.grid.Options);
+Ext.reg('changedomain-options-resource', changeDomain.grid.OptionsResource);
