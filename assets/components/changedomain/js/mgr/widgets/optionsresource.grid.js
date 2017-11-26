@@ -120,7 +120,7 @@ Ext.extend(changeDomain.grid.OptionsResource, MODx.grid.Grid, {
             dataIndex: 'domain_name',
             sortable: true
         },{
-            header: _('changedomain_option_domain'),
+            header: _('changedomain_option_domain_eng'),
             dataIndex: 'domain_ang',
             sortable: true
         },{
