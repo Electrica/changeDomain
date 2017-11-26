@@ -2,7 +2,7 @@
 include_once 'setting.inc.php';
 
 $_lang['changedomain'] = 'changeDomain';
-$_lang['changedomain_menu_desc'] = 'Пример расширения для разработки.';
+$_lang['changedomain_menu_desc'] = 'Управление поддоменами.';
 $_lang['changedomain_intro_msg'] = 'Вы можете выделять сразу несколько предметов при помощи Shift или Ctrl.';
 
 $_lang['changedomain_items'] = 'Домены';
@@ -49,6 +49,8 @@ $_lang['changedomain_option_name'] = 'Название';
 $_lang['changedomain_option_key'] = 'Ключ';
 $_lang['changedomain_option_value'] = 'Значение';
 $_lang['changedomain_option_remove'] = 'Удалить опцию';
+$_lang['changedomain_options_remove'] = 'Удалить опции';
+$_lang['changedomain_options_remove_confirm'] = 'Ну как так? Точно?';
 $_lang['changedomain_option_remove_confirm'] = 'Вы уверены, что хотите удалить эту опцию?';
 
 $_lang['changedomain_resource_tab'] = 'Параметры поддоменов';

@@ -10,7 +10,8 @@ $tmp = array(
         'description' => '',
         'events' => array(
             'OnHandleRequest' => array(),
-            'OnDocFormRender' => array()
+            'OnLoadWebDocument' => array(),
+            'OnManagerPageBeforeRender' => array()
         )
     )
 );

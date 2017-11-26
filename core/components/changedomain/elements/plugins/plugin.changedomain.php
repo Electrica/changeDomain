@@ -13,7 +13,16 @@ if (!$changeDomain = $modx->getService('changedomain', 'changeDomain', $modx->ge
 
 switch ($modx->event->name) {
 
-    case 'OnHandleRequest':
+    case 'OnManagerPageBeforeRender':
+
+        $controller->changeDomain = $changeDomain = $modx->getService('changedomain', 'changeDomain', $modx->getOption('changedomain_core_path', null,
+                $modx->getOption('core_path') . 'components/changedomain/') . 'model/changedomain/', $scriptProperties);
+
+        $controller->changeDomain->loadJsCss();
+        break;
+
+
+    case 'OnLoadWebDocument':
 
         // Извлекаем имя хоста из URL
         preg_match('@^(?:http://)?([^/]+)@i',
@@ -25,7 +34,7 @@ switch ($modx->event->name) {
         $domain = $matches[0];
 
         if($host != $domain){
-            $response = $changeDomain->checkHost($_SERVER['HTTP_HOST']);
+            $response = $changeDomain->checkHost($_SERVER['HTTP_HOST'], $modx->resource->get('id'));
             if($response['status'] == 'success'){
                 if($_SESSION['domain']){
                     unset($_SESSION['domain']);
@@ -42,15 +51,6 @@ switch ($modx->event->name) {
         }else{
             //TODO это основной сайт
         }
-        break;
-
-
-    case 'OnManagerPageBeforeRender':
-
-        $controller->changeDomain = $changeDomain = $modx->getService('changedomain', 'changeDomain', $modx->getOption('changedomain_core_path', null,
-                $modx->getOption('core_path') . 'components/changedomain/') . 'model/changedomain/', $scriptProperties);
-
-        $changeDomain->loadJsCss();
         break;
 
 }

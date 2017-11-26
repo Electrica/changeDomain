@@ -17,7 +17,7 @@ if(typeof (MODx.panel.Resource) !== 'undefined'){
                             ,layout: 'anchor'
                             ,anchor: '100%'
                             ,items: [{
-                                html: '<p>'+_('changedomain_resource_tab_decs')+'</p>'
+                                html: '<p>'+_('changedomain_resource_tab_desc')+'</p>'
                                 ,bodyCssClass: 'panel-desc'
                                 ,border: false
                             },{

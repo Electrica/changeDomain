@@ -48,23 +48,6 @@ class changeDomainItemGetListResourceProcessor extends modObjectGetListProcessor
         return $c;
     }
 
-    /**
-     * @param xPDOObject $object
-     *
-     * @return array
-     */
-    public function prepareRow(xPDOObject $object)
-    {
-        $array = $object->toArray();
-
-        $this->modx->log(MODX_LOG_LEVER_ERROR, print_r($array));
-
-
-        return $array;
-    }
-
-
-
 }
 
 return 'changeDomainItemGetListResourceProcessor';

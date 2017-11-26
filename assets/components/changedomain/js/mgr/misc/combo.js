@@ -51,8 +51,6 @@ Ext.reg('changedomain-field-search', changeDomain.combo.Search);
 
 changeDomain.combo.Domain = function (config) {
     config = config || {};
-    console.log(changeDomain.config);
-
     Ext.applyIf(config, {
         name: 'domain_id',
         fieldLabel: _('changedomain_get_domain'),
@@ -62,7 +60,7 @@ changeDomain.combo.Domain = function (config) {
         anchor: '99%',
         fields: ['id', 'name'],
         pageSize: 20,
-        url: '/changeDomain/assets/components/changedomain/connector.php',
+        url: changeDomain.config.connector_url,
         typeAhead: true,
         editable: true,
         allowBlank: true,

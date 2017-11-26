@@ -63,7 +63,9 @@ class changeDomain
         $this->modx->controller->addLexiconTopic('changedomain:default');
     }
 
-    public function checkHost($httpHost = ''){
+    public function checkHost($httpHost = '', $resourceId = 0){
+
+        $this->modx->log(MODX_LOG_LEVER_ERROR, $resourceId);
 
         // Определяем запрашиваемый хост
         $host = stristr($httpHost, '.', true);
@@ -76,9 +78,20 @@ class changeDomain
             /**
              * @var xPDOObject $response
              */
+
             $response = $this->modx->getObject('changeDomainItem', $q);
             if($response){
-                $options = $response->getMany('changeDomain', array('domain_id' => $response->get('id')));
+
+                if($resourceId){
+                    $optionsResource = $response->getMany('changeDomain', array('domain_id' => $response->get('id'),'resource_id' => $resourceId));
+                    if($optionsResource){
+                        $optres = array();
+                        foreach ($optionsResource as $opRes){
+                            $optres[] = $opRes->toArray();
+                        }
+                    }
+                }
+                $options = $response->getMany('changeDomain', array('domain_id' => $response->get('id'),'resource_id' => 0));
 
                 if($options){
                     $opt = array();
@@ -86,6 +99,7 @@ class changeDomain
                         $opt[] = $option->toArray();
                     }
                 }
+
             }
 
             if(is_object($response)){
@@ -93,7 +107,8 @@ class changeDomain
                     'status' => 'success',
                     'response' => array(
                         'values' => $response->toArray(),
-                        'options' => $opt
+                        'options' => $opt,
+                        'resourceOptions' => $optres
                     )
                 );
             }else{
@@ -104,6 +119,8 @@ class changeDomain
                 );
             }
         }
+
+        $this->modx->log(MODX_LOG_LEVER_ERROR, print_r($output));
 
         return $output;
     }
