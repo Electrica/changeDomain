@@ -65,8 +65,6 @@ class changeDomain
 
     public function checkHost($httpHost = '', $resourceId = 0){
 
-        $this->modx->log(MODX_LOG_LEVER_ERROR, $resourceId);
-
         // Определяем запрашиваемый хост
         $host = stristr($httpHost, '.', true);
         if($host){
@@ -120,9 +118,46 @@ class changeDomain
             }
         }
 
-        $this->modx->log(MODX_LOG_LEVER_ERROR, print_r($output));
-
         return $output;
+    }
+
+    /**
+     * Метод для вывода опций для ресурсов
+     */
+
+    public function getResourcesOptions($resources, $options){
+
+        if(stripos($resources,',')){
+            $resources = explode(',', $resources);
+            $resources = array_map('trim',$resources);
+        }else{
+            $resources = trim($resources);
+        }
+
+        if(stripos($options,',')){
+            $options = explode(',', $options);
+            $options = array_map('trim', $options);
+        }else{
+            $options = trim($options);
+        }
+
+        // Выбираем у ресурса данные опции
+
+        if(is_array($resources)){
+            foreach ($resources as $resource){
+                $q = $this->modx->newQuery('changeDomainOptions');
+                $q->where(array('domain_id' => $resource));
+
+                $outputs = $this->modx->getCollection('changeDomainOptions', $q);
+
+                foreach ($outputs as $output){
+                    print_r($output->toArray());
+                }
+            }
+        }
+
+
+
     }
 
 }

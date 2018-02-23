@@ -25,8 +25,12 @@ switch ($modx->event->name) {
     case 'OnLoadWebDocument':
 
         // Извлекаем имя хоста из URL
-        preg_match('@^(?:http://)?([^/]+)@i',
-            $_SERVER['HTTP_HOST'], $matches);
+        if($_SERVER['HTTPS']){
+            preg_match('@^(?:https://)?([^/]+)@i',$_SERVER['HTTP_HOST'], $matches);
+        }else{
+            preg_match('@^(?:http://)?([^/]+)@i',$_SERVER['HTTP_HOST'], $matches);
+        }
+
         $host = $matches[1];
 
         // извлекаем две последние части имени хоста
@@ -45,7 +49,8 @@ switch ($modx->event->name) {
                     $modx->log(MODX_LOG_LEVEL_ERROR, 'Перешли на ' . $_SERVER['HTTP_HOST']);
                 }
                 if($modx->getOption('changedomain_redirect')){
-                    $modx->sendRedirect('http://' . $domain, array('responseCode' => 'HTTP/1.1 301 Moved Permanently'));
+                    $http = $_SERVER['HTTPS'] ? 'https://' : 'https://';
+                    $modx->sendRedirect($http . $domain, array('responseCode' => 'HTTP/1.1 301 Moved Permanently'));
                 }
             }
         }else{
