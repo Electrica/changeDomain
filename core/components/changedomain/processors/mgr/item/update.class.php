@@ -29,6 +29,7 @@ class changeDomainItemUpdateProcessor extends modObjectUpdateProcessor
      */
     public function beforeSet()
     {
+        $this->modx->log(MODX_LOG_LEVEL_ERROR, print_r($this->getProperty('id')));
         $id = (int)$this->getProperty('id');
         $name = trim($this->getProperty('name'));
         if (empty($id)) {

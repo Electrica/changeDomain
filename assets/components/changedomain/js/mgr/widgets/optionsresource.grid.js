@@ -10,6 +10,9 @@ changeDomain.grid.OptionsResource = function (config) {
         columns: this.getColumns(config),
         tbar: this.getTopBar(config),
         sm: new Ext.grid.CheckboxSelectionModel(),
+        preventSaveRefresh: 0,
+        autosave: true,
+        save_action: 'mgr/item/options/updatefromgrid',
         baseParams: {
             action: 'mgr/resource/getlist',
             resource_id: config.record.id
