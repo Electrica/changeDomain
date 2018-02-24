@@ -3,8 +3,7 @@ changeDomain.window.CreateItem = function (config) {
     if (!config.id) {
         config.id = 'changedomain-item-window-create';
     }
-    config.record = config.record || {object: {id: 0}}
-    console.log(config.record);
+    config.record = config.record || {object: {id: 0}};
     Ext.applyIf(config, {
         title: _('changedomain_item_create'),
         width: 650,
