@@ -33,7 +33,6 @@ class changeDomainOptionsCreateProcessor extends modObjectCreateProcessor
                 }
             }
         }elseif($this->getProperty('domain_id') && !$this->getProperty('resource_id')){
-            $this->modx->log(MODX_LOG_LEVER_ERROR, "А это чисто с компонента");
             $name = trim($this->getProperty('name'));
             if (empty($name)) {
                 $this->modx->error->addField('name', $this->modx->lexicon('changedomain_item_err_name'));
