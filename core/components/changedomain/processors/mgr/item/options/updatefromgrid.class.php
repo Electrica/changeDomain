@@ -34,8 +34,15 @@ class changeDomainUpdateFromGridOptionsProcessor extends modObjectUpdateProcesso
      */
     public function beforeSave()
     {
+        $this->modx->log(MODX_LOG_LEVEL_ERROR, print_r($this->getProperty('id'), 1));
         if (!$this->checkPermissions()) {
             return $this->modx->lexicon('access_denied');
+        }
+
+        if (empty($this->getProperty('name'))) {
+            return $this->modx->lexicon('changedomain_options_err_empty');
+        } elseif ($this->modx->getCount($this->classKey, array('name' => $this->getProperty('name'), 'domain_id:=' => $this->getProperty('domain_id')))) {
+            return $this->modx->lexicon('changedomain_options_err_ae');
         }
 
         return true;

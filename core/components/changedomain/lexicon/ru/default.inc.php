@@ -28,6 +28,8 @@ $_lang['changedomain_item_active'] = 'Включено';
 
 $_lang['changedomain_item_err_name'] = 'Вы должны указать имя домена.';
 $_lang['changedomain_item_err_ae'] = 'Домен с таким именем уже существует.';
+$_lang['changedomain_options_err_ae'] = 'Опция с таким именем уже существует.';
+$_lang['changedomain_options_err_empty'] = 'Необходимо указать имя опции.';
 $_lang['changedomain_item_err_nf'] = 'Домен не найден.';
 $_lang['changedomain_item_err_ns'] = 'Домен не указан.';
 $_lang['changedomain_item_err_remove'] = 'Ошибка при удалении домена.';

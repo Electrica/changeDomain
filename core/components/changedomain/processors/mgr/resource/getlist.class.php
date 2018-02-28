@@ -48,8 +48,8 @@ class changeDomainOptionsGetListProcessor extends modObjectGetListProcessor
 
         $c->leftJoin('changeDomainItem', 'changeDomainItem', 'changeDomainOptions.domain_id = changeDomainItem.id');
         $c->select($this->modx->getSelectColumns('changeDomainItem', 'changeDomainItem','',array('name')));
-        $c->select($this->modx->getSelectColumns('changeDomainOptions', 'changeDomainOptions','',array('id','name','key','value')));
-        $c->select('changeDomainItem.name as domain_name,changeDomainItem.id as domain_name_id,changeDomainItem.domain as domain_ang');
+        $c->select($this->modx->getSelectColumns('changeDomainOptions', 'changeDomainOptions','',array('id','domain_id','name','key','value')));
+        $c->select('changeDomainItem.name as domain_name,changeDomainItem.id as domain_id,changeDomainItem.domain as domain_ang');
 
         return $c;
     }
