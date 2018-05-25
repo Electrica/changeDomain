@@ -109,7 +109,7 @@ Ext.extend(changeDomain.grid.OptionsResource, MODx.grid.Grid, {
     },
 
     getFields: function () {
-        return ['id','domain_name','domain_id','domain_ang', 'name', 'key', 'value', 'actions'];
+        return ['id','domain_name','domain_id','resource_id','domain_ang', 'name', 'key', 'value', 'actions'];
     },
 
     getColumns: function () {
@@ -121,10 +121,6 @@ Ext.extend(changeDomain.grid.OptionsResource, MODx.grid.Grid, {
         },{
             header: _('changedomain_option_domain'),
             dataIndex: 'domain_name',
-            sortable: true
-        },{
-            header: _('changedomain_option_domain'),
-            dataIndex: 'domain_id',
             sortable: true
         },{
             header: _('changedomain_option_domain_eng'),

@@ -34,18 +34,27 @@ class changeDomainUpdateFromGridOptionsProcessor extends modObjectUpdateProcesso
      */
     public function beforeSave()
     {
-        $this->modx->log(MODX_LOG_LEVEL_ERROR, print_r($this->getProperty('id'), 1));
         if (!$this->checkPermissions()) {
             return $this->modx->lexicon('access_denied');
         }
 
         if (empty($this->getProperty('name'))) {
             return $this->modx->lexicon('changedomain_options_err_empty');
-        } elseif ($this->modx->getCount($this->classKey, array('name' => $this->getProperty('name'), 'domain_id:=' => $this->getProperty('domain_id')))) {
-            return $this->modx->lexicon('changedomain_options_err_ae');
+        }
+        //Значение опции поменялось
+
+        if($this->getProperty('resource_id') == 0){
+            if($this->modx->getCount($this->classKey, array('name' => $this->getProperty('name'), 'id:!=' => $this->getProperty('id'), 'domain_id' => $this->getProperty('domain_id')))){
+                return $this->modx->lexicon('changedomain_options_err_ae');
+            }
+        }else{
+            if($this->modx->getCount($this->classKey, array('name' => $this->getProperty('name'), 'id:!=' => $this->getProperty('id'), 'domain_id' => $this->getProperty('domain_id'), 'resource_id' => $this->getProperty('resource_id')))){
+                return $this->modx->lexicon('changedomain_options_err_ae');
+            }
         }
 
         return true;
+
     }
 
 
