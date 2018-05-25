@@ -122,6 +122,9 @@ Ext.extend(changeDomain.grid.Options, MODx.grid.Grid, {
             dataIndex: 'name',
             sortable: true,
             width: 100,
+            editor: {
+                xtype: 'textfield'
+            }
         }, {
             header: _('changedomain_option_key'),
             dataIndex: 'key',
