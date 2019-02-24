@@ -10,6 +10,11 @@ $tmp = array(
         'value' => false,
         'area' => 'changedomain_main',
     ),
+    'placeholders' => array(
+        'xtype' => 'textfield',
+        'value' => 'chd',
+        'area' => 'changedomain_main',
+    ),
     'save_log' => array(
         'xtype' => 'combo-boolean',
         'value' => false,

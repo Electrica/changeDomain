@@ -5,10 +5,10 @@
     <object class="changeDomainItem" table="changedomain_domain" extends="xPDOSimpleObject">
         <field key="name" dbtype="varchar" precision="100" phptype="string" null="false" default=""/>
         <field key="domain" dbtype="varchar" precision="100" phptype="string" null="false" default=""/>
-        <field key="description" dbtype="text" phptype="text" null="true" default=""/>
-        <field key="keywords" dbtype="text" phptype="text" null="true" default=""/>
-        <field key="maps" dbtype="text" phptype="text" null="true" default=""/>
-        <field key="yandex" dbtype="text" phptype="text" null="true" default=""/>
+        <field key="description" dbtype="text" phptype="string" null="true" default=""/>
+        <field key="keywords" dbtype="text" phptype="string" null="true" default=""/>
+        <field key="maps" dbtype="text" phptype="string" null="true" default=""/>
+        <field key="yandex" dbtype="text" phptype="string" null="true" default=""/>
 
         <field key="active" dbtype="tinyint" precision="1" phptype="boolean" null="true" default="1"/>
 

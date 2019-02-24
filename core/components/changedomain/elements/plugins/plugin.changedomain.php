@@ -44,6 +44,13 @@ switch ($modx->event->name) {
                     unset($_SESSION['domain']);
                 }
                 $_SESSION['domain'] = $response['response'];
+
+                //TODO добавить в плейсхолдеры
+                foreach ($_SESSION['domain']['value'] as $key => $value){
+                    $modx->setPlaceholder($modx->getOption('changedomain_placeholders', null, 'chd') . '_' . $key, $value);
+                }
+
+
             }elseif($response['status'] == 'error'){
                 if($modx->getOption('changedomain_save_log')){
                     $modx->log(MODX_LOG_LEVEL_ERROR, 'Перешли на ' . $_SERVER['HTTP_HOST']);
