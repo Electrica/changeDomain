@@ -89,6 +89,11 @@ class changeDomain
                         }
                     }
                 }
+
+            }
+
+            $response = $this->modx->getObject('changeDomainItem', $q);
+            if($response){
                 $options = $response->getMany('changeDomain', array('domain_id' => $response->get('id'),'resource_id' => 0));
 
                 if($options){
@@ -97,7 +102,6 @@ class changeDomain
                         $opt[] = $option->toArray();
                     }
                 }
-
             }
 
             if(is_object($response)){
