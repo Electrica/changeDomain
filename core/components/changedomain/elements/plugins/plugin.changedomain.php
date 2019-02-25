@@ -39,17 +39,31 @@ switch ($modx->event->name) {
 
         if($host != $domain){
             $response = $changeDomain->checkHost($_SERVER['HTTP_HOST'], $modx->resource->get('id'));
+
             if($response['status'] == 'success'){
                 if($_SESSION['domain']){
                     unset($_SESSION['domain']);
                 }
                 $_SESSION['domain'] = $response['response'];
 
-                //TODO добавить в плейсхолдеры
-                foreach ($_SESSION['domain']['value'] as $key => $value){
+                //TODO добавить в плейсхолдеры информацию о домене
+                foreach ($_SESSION['domain']['values'] as $key => $value){
                     $modx->setPlaceholder($modx->getOption('changedomain_placeholders', null, 'chd') . '_' . $key, $value);
                 }
 
+                //TODO Добавим в плейсхолдеры информацию о опциях
+                if($_SESSION['domain']['options']){
+                    foreach ($_SESSION['domain']['options'] as $key => $value) {
+                        $modx->setPlaceholder($modx->getOption('changedomain_placeholders', null, 'chd') . '_options_' . $value['key'], $value);
+                    }
+                }
+
+                //TODO Добавим в плейсхолдеры информацию о опциях ресурса
+                if($_SESSION['domain']['resourceOptions']){
+                    foreach ($_SESSION['domain']['resourceOptions'] as $key => $value) {
+                        $modx->setPlaceholder($modx->getOption('changedomain_placeholders', null, 'chd') . '_resourceoptions_' . $value['key'], $value);
+                    }
+                }
 
             }elseif($response['status'] == 'error'){
                 if($modx->getOption('changedomain_save_log')){
