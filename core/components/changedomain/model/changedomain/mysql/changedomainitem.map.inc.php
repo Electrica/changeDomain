@@ -4,6 +4,10 @@ $xpdo_meta_map['changeDomainItem']= array (
   'version' => '1.1',
   'table' => 'changedomain_domain',
   'extends' => 'xPDOSimpleObject',
+  'tableMeta' => 
+  array (
+    'engine' => 'MyISAM',
+  ),
   'fields' => 
   array (
     'name' => '',
@@ -35,28 +39,28 @@ $xpdo_meta_map['changeDomainItem']= array (
     'description' => 
     array (
       'dbtype' => 'text',
-      'phptype' => 'text',
+      'phptype' => 'string',
       'null' => true,
       'default' => '',
     ),
     'keywords' => 
     array (
       'dbtype' => 'text',
-      'phptype' => 'text',
+      'phptype' => 'string',
       'null' => true,
       'default' => '',
     ),
     'maps' => 
     array (
       'dbtype' => 'text',
-      'phptype' => 'text',
+      'phptype' => 'string',
       'null' => true,
       'default' => '',
     ),
     'yandex' => 
     array (
       'dbtype' => 'text',
-      'phptype' => 'text',
+      'phptype' => 'string',
       'null' => true,
       'default' => '',
     ),

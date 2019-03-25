@@ -48,20 +48,20 @@ switch ($modx->event->name) {
 
                 //TODO добавить в плейсхолдеры информацию о домене
                 foreach ($_SESSION['domain']['values'] as $key => $value){
-                    $modx->setPlaceholder($modx->getOption('changedomain_placeholders', null, 'chd') . '_' . $key, $value);
+                    $modx->toPlaceholder($modx->getOption('changedomain_placeholders', null, 'chd') . '_' . $key, $value);
                 }
 
                 //TODO Добавим в плейсхолдеры информацию о опциях
                 if($_SESSION['domain']['options']){
                     foreach ($_SESSION['domain']['options'] as $key => $value) {
-                        $modx->setPlaceholder($modx->getOption('changedomain_placeholders', null, 'chd') . '_options_' . $value['key'], $value);
+                        $modx->toPlaceholder($modx->getOption('changedomain_placeholders', null, 'chd') . '_options_' . $value['key'], $value);
                     }
                 }
 
                 //TODO Добавим в плейсхолдеры информацию о опциях ресурса
                 if($_SESSION['domain']['resourceOptions']){
                     foreach ($_SESSION['domain']['resourceOptions'] as $key => $value) {
-                        $modx->setPlaceholder($modx->getOption('changedomain_placeholders', null, 'chd') . '_resourceoptions_' . $value['key'], $value);
+                        $modx->toPlaceholder($modx->getOption('changedomain_placeholders', null, 'chd') . '_resourceoptions_' . $value['key'], $value);
                     }
                 }
 
