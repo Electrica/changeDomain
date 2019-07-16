@@ -4,7 +4,12 @@
 
 $snippets = array();
 
-$tmp = array();
+$tmp = array(
+    'changeDomain' => array(
+        'file' => 'changedomain',
+        'description' => 'Сниппет для вывода поддоменов',
+    ),
+);
 
 foreach ($tmp as $k => $v) {
     /** @var modSnippet $snippet */

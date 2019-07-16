@@ -8,6 +8,7 @@ $_lang['changedomain_intro_msg'] = 'Вы можете выделять сраз�
 $_lang['changedomain_items'] = 'Домены';
 $_lang['changedomain_item_id'] = 'Id';
 $_lang['changedomain_city_name'] = 'Название города';
+$_lang['changedomain_city_title'] = 'Уникальный title';
 $_lang['changedomain_domain'] = 'Поддомен';
 $_lang['changedomain_maps'] = 'Карта';
 $_lang['changedomain_yandex'] = 'Яндекс вебмастер';

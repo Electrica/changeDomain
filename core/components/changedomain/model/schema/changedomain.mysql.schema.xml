@@ -5,6 +5,7 @@
     <object class="changeDomainItem" table="changedomain_domain" extends="xPDOSimpleObject">
         <field key="name" dbtype="varchar" precision="100" phptype="string" null="false" default=""/>
         <field key="domain" dbtype="varchar" precision="100" phptype="string" null="false" default=""/>
+        <field key="title" dbtype="text" phptype="string" null="true" default=""/>
         <field key="description" dbtype="text" phptype="string" null="true" default=""/>
         <field key="keywords" dbtype="text" phptype="string" null="true" default=""/>
         <field key="maps" dbtype="text" phptype="string" null="true" default=""/>

@@ -6,7 +6,7 @@ changeDomain.window.CreateItem = function (config) {
     config.record = config.record || {object: {id: 0}};
     Ext.applyIf(config, {
         title: _('changedomain_item_create'),
-        width: 650,
+        width: 700,
         autoHeight: true,
         url: changeDomain.config.connector_url,
         action: 'mgr/item/create',
@@ -39,7 +39,7 @@ Ext.extend(changeDomain.window.CreateItem, MODx.Window, {
                     border: 'false',
                     anchor: '100%',
                     items:[{
-                        columnWidth: 1
+                        columnWidth: .5
                         ,layout: 'form',
                         defaults: {msTarget: 'under'},
                         border: 'false',
@@ -57,18 +57,6 @@ Ext.extend(changeDomain.window.CreateItem, MODx.Window, {
                             allowBlank: false,
                         },{
                             xtype: 'textarea',
-                            fieldLabel: _('changedomain_description'),
-                            name: 'description',
-                            anchor: '99%',
-                            allowBlank: true,
-                        },{
-                            xtype: 'textarea',
-                            fieldLabel: _('changedomain_keywords'),
-                            name: 'keywords',
-                            anchor: '99%',
-                            allowBlank: true,
-                        },{
-                            xtype: 'textarea',
                             fieldLabel: _('changedomain_maps'),
                             name: 'maps',
                             height: 150,
@@ -83,7 +71,32 @@ Ext.extend(changeDomain.window.CreateItem, MODx.Window, {
                             xtype: 'xcheckbox',
                             boxLabel: _('changedomain_active'),
                             name: 'active',
-                            checked: true,
+                            checked: true
+                        }]
+                    },{
+                        columnWidth: .5,
+                        layout: 'form',
+                        defaults: {msTarget: 'under'},
+                        border: 'false',
+                        items:[{
+                            xtype: 'textfield',
+                            fieldLabel: _('changedomain_city_title'),
+                            name: 'title',
+                            anchor: '99%'
+                        },{
+                            xtype: 'textarea',
+                            fieldLabel: _('changedomain_description'),
+                            name: 'description',
+                            height: 150,
+                            anchor: '99%',
+                            allowBlank: true
+                        },{
+                            xtype: 'textarea',
+                            fieldLabel: _('changedomain_keywords'),
+                            name: 'keywords',
+                            height: 150,
+                            anchor: '99%',
+                            allowBlank: true
                         }]
                     }]
                 }]
@@ -113,7 +126,7 @@ changeDomain.window.UpdateItem = function (config) {
     }
     Ext.applyIf(config, {
         title: _('changedomain_item_update'),
-        width: 550,
+        width: 700,
         autoHeight: true,
         url: changeDomain.config.connector_url,
         action: 'mgr/item/update',
@@ -146,7 +159,7 @@ Ext.extend(changeDomain.window.UpdateItem, MODx.Window, {
                     border: 'false',
                     anchor: '100%',
                     items:[{
-                        columnWidth: 1
+                        columnWidth: 0.5
                         ,layout: 'form',
                         defaults: {msTarget: 'under'},
                         border: 'false',
@@ -167,16 +180,6 @@ Ext.extend(changeDomain.window.UpdateItem, MODx.Window, {
                             allowBlank: false,
                         },{
                             xtype: 'textarea',
-                            fieldLabel: _('changedomain_description'),
-                            name: 'description',
-                            anchor: '99%',
-                        },{
-                            xtype: 'textarea',
-                            fieldLabel: _('changedomain_keywords'),
-                            name: 'keywords',
-                            anchor: '99%',
-                        },{
-                            xtype: 'textarea',
                             fieldLabel: _('changedomain_maps'),
                             name: 'maps',
                             height: 150,
@@ -192,6 +195,31 @@ Ext.extend(changeDomain.window.UpdateItem, MODx.Window, {
                             boxLabel: _('changedomain_active'),
                             name: 'active',
                             checked: true,
+                        }]
+                    },{
+                        columnWidth: .5,
+                        layout: 'form',
+                        defaults: {msTarget: 'under'},
+                        border: 'false',
+                        items:[{
+                            xtype: 'textfield',
+                            fieldLabel: _('changedomain_city_title'),
+                            name: 'title',
+                            anchor: '99%'
+                        },{
+                            xtype: 'textarea',
+                            fieldLabel: _('changedomain_description'),
+                            name: 'description',
+                            height: 150,
+                            anchor: '99%',
+                            allowBlank: true
+                        },{
+                            xtype: 'textarea',
+                            fieldLabel: _('changedomain_keywords'),
+                            name: 'keywords',
+                            height: 150,
+                            anchor: '99%',
+                            allowBlank: true
                         }]
                     }]
                 }]

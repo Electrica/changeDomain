@@ -4,7 +4,12 @@
 
 $chunks = array();
 
-$tmp = array();
+$tmp = array(
+    'tpl.changeDomain' => array(
+        'file' => 'changedomain',
+        'description' => 'Чанк для вывода доменов',
+    )
+);
 
 // Save chunks for setup options
 $BUILD_CHUNKS = array();
